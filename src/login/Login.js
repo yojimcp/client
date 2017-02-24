@@ -9,15 +9,15 @@ export default class Login extends Component {
   constructor(){
     super();
     this.state={
-      user:'',
+      username:'',
       password:'',
       loading:false
     }
   }
 
-  cleanUsername(username){
-    if(username){
-      return username.toLowerCase().trim();
+  cleanUsername(user){
+    if(user){
+      return user.toLowerCase().trim();
     }
     return null;
   }
@@ -30,7 +30,7 @@ export default class Login extends Component {
     e.preventDefault();
     let _self = this;
     const reqBody = {
-			"username": this.cleanUsername(this.state.user),
+			"username": this.cleanUsername(this.state.username),
 			"password": this.state.password
 		};
     Auth.login( reqBody, ( error, data )=>{
@@ -55,8 +55,8 @@ export default class Login extends Component {
       <div>
 
         <TextField
-          value = {this.state.user}
-          onChange = {(e)=>{this.handleChange('user',e);}}
+          value = {this.state.username}
+          onChange = {(e)=>{this.handleChange('username',e);}}
           floatingLabelText="Usuario"
           floatingLabelFixed={true}
           errorText=""

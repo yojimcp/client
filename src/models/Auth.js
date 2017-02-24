@@ -11,7 +11,7 @@ const serviceName = 'login';
 export default class Auth{
   // login[POST]
   static login( model, next ){
-    var service = api.all('login');
+    var service = api.all('user/sigin');
     service.post(model).then(
     (result)=>{
       return next(null,result);
