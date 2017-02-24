@@ -1,7 +1,7 @@
 import AuthToken from './AuthToken';
 import 'whatwg-fetch';
 
-import restful, { fetchBackend } from 'restful/lib/restful.js';
+import restful, { fetchBackend } from 'restful.js';
 import Config from '../config/development';
 const api = restful(Config.URL_SERVER, fetchBackend(fetch));
 api.identifier('_id');
@@ -22,18 +22,6 @@ api.addResponseInterceptor((response, config) => {
       AuthToken.setToken(headers.authorization);
     }
     return config;
-});
-
-api.on('request:interceptor:pre', (config, interceptorName) => {
-    $("#loading-bar").show();
-});
-
-api.on('response:interceptor:post', (response, config, interceptorName) => {
-    $("#loading-bar").hide();
-});
-
-api.on('error', (error, config) => {
-    $("#loading-bar").hide();
 });
 
 export default api;

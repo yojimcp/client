@@ -24,21 +24,6 @@ export default class Auth{
     });
   }
 
-  static loginZendesk( formData, next ){
-    var service = api.all('login//zendesk/sso');
-		service.header( 'Content-Type', 'application/json' );
-		service.header( 'Accept', 'application/json' );
-    service.post( formData ).then(
-    ( result )=>{
-      return next( null, result.body(false).data );
-    },( error )=>{
-      return next( error.response.data.data );
-    })
-    .catch( ( err ) => {
-      console.log('error',err);
-      return next( err );
-    });
-  }
   // me[GET]
   static me(next){
     var service = api.all('me');

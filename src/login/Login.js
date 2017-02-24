@@ -22,7 +22,7 @@ export default class Login extends Component {
     return null;
   }
 
-  handleLogin( e ){ alert("llegue");};
+  //handleLogin( e ){ alert("llegue");};
 
 
   handleLogin( e ){
